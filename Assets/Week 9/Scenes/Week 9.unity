@@ -5818,19 +5818,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4677169794042376072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8016798456586444770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f278b0413d5bb14e912abd94ce4e01a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlight: {fileID: 6320965441753652661}
 --- !u!50 &4737731231843253598
 Rigidbody2D:
   serializedVersion: 4
@@ -7213,7 +7200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126460836058459171}
   - component: {fileID: 4984665444671548078}
-  - component: {fileID: 4677169794042376072}
+  - component: {fileID: 8016798456586444771}
   - component: {fileID: 4737731231843253598}
   - component: {fileID: 3086793335009889377}
   m_Layer: 0
@@ -7223,6 +7210,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8016798456586444771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016798456586444770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c697d0bce3976ec4bbff71575c2d5275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 6320965441753652661}
 --- !u!212 &8099962653790267487
 SpriteRenderer:
   m_ObjectHideFlags: 0
