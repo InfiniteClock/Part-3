@@ -11,5 +11,10 @@ public class Archer : Villager
     {
         destination = transform.position;
         Instantiate(arrow, spawnPoint);
+        base.Attack();
+    }
+    public override ChestType canOpen()
+    {
+        return ChestType.Archer;
     }
 }

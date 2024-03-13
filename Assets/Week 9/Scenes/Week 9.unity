@@ -1191,13 +1191,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466584159}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0.6, y: 1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7728133075684496494}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1065662255747170615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!1001 &519182064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1404,6 +1404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6491913701516345902}
+  chestType: 2
 --- !u!1001 &676232074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2405,6 +2406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6491913701707544840}
+  chestType: 0
 --- !u!1 &1322579541
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,6 +3816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6491913700987384211}
+  chestType: 0
 --- !u!212 &150802953268865269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4183,6 +4186,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2178118166994874367}
+  - {fileID: 466584160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1127101254343119421
@@ -4364,6 +4368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3615272711677250161}
   - component: {fileID: 4142715628661740466}
+  - component: {fileID: 4142715628661740467}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -4398,6 +4403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3615272711411027829}
   - component: {fileID: 4142715628927145654}
+  - component: {fileID: 4142715628927145655}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -5701,6 +5707,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4142715628661740467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671459497479016827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe55687bc76ec745801e395e2b24f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6491913701438405644}
+  chestType: 1
 --- !u!212 &4142715628927145654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5753,6 +5773,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4142715628927145655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671459497749402751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe55687bc76ec745801e395e2b24f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6491913701707544840}
+  chestType: 0
 --- !u!212 &4142715629112499757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7190,8 +7224,7 @@ Transform:
   m_LocalPosition: {x: -0.06, y: -0.613, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 466584160}
+  m_Children: []
   m_Father: {fileID: 5433014066246288233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 64.152}
 --- !u!4 &7985841585657812258
@@ -8149,6 +8182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6491913701438405644}
+  chestType: 1
 --- !u!212 &8880890978940214816
 SpriteRenderer:
   m_ObjectHideFlags: 0
