@@ -10,11 +10,15 @@ public class Archer : Villager
     protected override void Attack()
     {
         destination = transform.position;
-        Instantiate(arrow, spawnPoint);
+        Instantiate(arrow, spawnPoint.position, spawnPoint.rotation);
         base.Attack();
     }
     public override ChestType canOpen()
     {
         return ChestType.Archer;
+    }
+    public override string ToString()
+    {
+        return "This is an archer";
     }
 }
