@@ -28,7 +28,10 @@ public class CharacterControl : MonoBehaviour
     }
     public void DropdownChange(int value)
     {
-        // Note: First value in list is left blank. This causes a nullreference error but this is intentional and doesn't break anything
         SetSelectedVillager(characters[value]);
+    }
+    public void AdjustSize(float value)
+    {
+        SelectedVillager.scale = value;
     }
 }
