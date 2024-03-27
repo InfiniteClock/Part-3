@@ -17,18 +17,19 @@ public class Growing : MonoBehaviour
 
     void Start()
     {
-        Square();
+        StartCoroutine(Square());
         Triangle();
         Circle();
     }
 
     void Update()
     {
-        
+        crTMP.text = "Coroutines: "+ running.ToString();
     }
 
-    void Square()
+    IEnumerator Square()
     {
+        running++;
         float size = 0;
         while (size < 5)
         {
@@ -36,7 +37,9 @@ public class Growing : MonoBehaviour
             Vector3 scale = new Vector3(size, size, size);
             square.transform.localScale = scale;
             squareTMP.text = "Square: " + scale;
+            yield return null;
         }
+        running--;
     }
     void Triangle()
     {
@@ -58,14 +61,14 @@ public class Growing : MonoBehaviour
             size += Time.deltaTime;
             Vector3 scale = new Vector3(size, size, size);
             circle.transform.localScale = scale;
-            circleTMP.text = "Cirlce: " + scale;
+            circleTMP.text = "Circle: " + scale;
         }
         while (size > 0)
         {
             size -= Time.deltaTime;
             Vector3 scale = new Vector3(size, size, size);
             circle.transform.localScale = scale;
-            circleTMP.text = "Cirlce: " + scale;
+            circleTMP.text = "Circle: " + scale;
         }
     }
 }
