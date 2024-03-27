@@ -68,22 +68,25 @@ public class Growing : MonoBehaviour
     {
         running++;
         float size = 0;
-        while (size < 5)
+        while (true)
         {
-            size += Time.deltaTime;
-            Vector3 scale = new Vector3(size, size, size);
-            circle.transform.localScale = scale;
-            circleTMP.text = "Circle: " + scale;
-            yield return null;
+            while (size < 5)
+            {
+                size += Time.deltaTime;
+                Vector3 scale = new Vector3(size, size, size);
+                circle.transform.localScale = scale;
+                circleTMP.text = "Circle: " + scale;
+                yield return null;
+            }
+            while (size > 0)
+            {
+                size -= Time.deltaTime;
+                Vector3 scale = new Vector3(size, size, size);
+                circle.transform.localScale = scale;
+                circleTMP.text = "Circle: " + scale;
+                yield return null;
+            } 
         }
-        while (size > 0)
-        {
-            size -= Time.deltaTime;
-            Vector3 scale = new Vector3(size, size, size);
-            circle.transform.localScale = scale;
-            circleTMP.text = "Circle: " + scale;
-            yield return null;
-        }
-        running--;
+        //running--;
     }
 }
