@@ -9,6 +9,10 @@ public class Controller : MonoBehaviour
 {
     public static Controller instance { get; private set; }
 
+    public GameObject normalEnemy;
+    public GameObject fastEnemy;
+    public GameObject slowEnemy;
+
     public List<Vector2> path;                      // Holds the path for the enemies to follow
     public List<Vector2> tileLocations;             // Holds the locations of every defense tile
     public GameObject emptyUI;                      // Holds the UI for an empty tile
@@ -38,14 +42,17 @@ public class Controller : MonoBehaviour
     public static int funds { get; private set; }   // The current money
     private void Start()
     {
+        instance = this;
         foreach (Vector2 t in tileLocations)
         {
             Instantiate(tilePrefab, t, Quaternion.identity);
         }
         currentUI = noUI;
-        funds = 200;
-        health = 20;
+        funds = 0;
+        health = 100;
         wave = 0;
+        AdjustMoney(200);
+        LoseHP(0);
     }
     private void Update()
     {
@@ -116,11 +123,128 @@ public class Controller : MonoBehaviour
         int numbEnemies = 0;
         while (numbEnemies < wave * 10)
         {
-            //Spawn enemies feature 2
-            yield return new WaitForSeconds(1f - (wave/20f));   // Enemies spawn faster with each wave, up to twice as fast on wave 10
+            switch (wave)
+            {
+                case 1:
+                    CreateEnemy(normalEnemy);
+                    break;
+                case 2:
+                    CreateEnemy(fastEnemy);
+                    break;
+                case 3:
+                    if (numbEnemies % 5 == 1)
+                    {
+                        CreateEnemy(slowEnemy);
+                    }
+                    else
+                    {
+                        CreateEnemy(normalEnemy);
+                    }
+                    break;
+                case 4:
+                    if (numbEnemies % 3 == 1)
+                    {
+                        CreateEnemy(fastEnemy);
+                    }
+                    else
+                    {
+                        CreateEnemy(normalEnemy);
+                    }
+                    break;
+                case 5:
+                    if (numbEnemies % 5 == 1)
+                    {
+                        CreateEnemy(slowEnemy);
+                    }
+                    else if (numbEnemies % 3 == 1)
+                    {
+                        CreateEnemy(fastEnemy);
+                    }
+                    else
+                    {
+                        CreateEnemy(normalEnemy);
+                    }
+                    break;
+                case 6:
+                    if (numbEnemies % 5 == 1)
+                    {
+                        CreateEnemy(slowEnemy);
+                        CreateEnemy(fastEnemy);
+                    }
+                    else
+                    {
+                        CreateEnemy(fastEnemy);
+                    }
+                    break;
+                case 7:
+                    if (numbEnemies % 7 == 1)
+                    {
+                        CreateEnemy(slowEnemy);
+                        CreateEnemy(fastEnemy);
+                        CreateEnemy(normalEnemy);
+                    }
+                    else if (numbEnemies % 4 == 1)
+                    {
+                        CreateEnemy(fastEnemy);
+                        CreateEnemy(normalEnemy);
+                    }
+                    else
+                    {
+                        CreateEnemy(normalEnemy);
+                    }
+                    break;
+                case 8:
+                    CreateEnemy(fastEnemy);
+                    CreateEnemy(normalEnemy);
+                    break;
+                case 9:
+                    CreateEnemy(slowEnemy);
+                    yield return null;
+                    CreateEnemy(fastEnemy);
+                    break;
+                case 10:
+                    if (numbEnemies % 10 == 1)
+                    {
+                        CreateEnemy(slowEnemy);
+                        yield return null;
+                        CreateEnemy(slowEnemy);
+                        yield return null;
+                        CreateEnemy(slowEnemy);
+                    }
+                    if (numbEnemies % 5 == 1)
+                    {
+                        CreateEnemy(fastEnemy);
+                        yield return null;
+                        CreateEnemy(normalEnemy);
+                    }
+                    CreateEnemy(fastEnemy);
+                    break;
+                default:
+                    int rand = Random.Range(1, 3);
+                    if (rand == 1)
+                    {
+                        CreateEnemy(normalEnemy);
+                    }
+                    if (rand == 2)
+                    {
+                        CreateEnemy(fastEnemy);
+                    }
+                    if (rand == 3)
+                    {
+                        CreateEnemy(slowEnemy);
+                    }
+                    break;
+
+            }
+            numbEnemies++;
+            yield return new WaitForSeconds(1f - (wave/20f));   // Enemies spawn faster with each wave, up to twice as fast on wave 10, and even faster after that breaks on wave 21
         }
     }
-
+    private void CreateEnemy(GameObject enemy)
+    {
+        GameObject temp = Instantiate(enemy, path[0], Quaternion.identity);
+        //temp.GetComponent<Enemy>().path = path;
+    }
     private void SetUI(GameObject UI)
     {
         if (currentUI != UI)
@@ -171,14 +295,14 @@ public class Controller : MonoBehaviour
     IEnumerator AlterFunds(int value)
     {
         int temp = funds;
-        funds = value;
-        while (funds < value)
+        funds += value;
+        while (temp < funds)
         {
             temp++;
             money.text = temp.ToString();
             yield return null;
         }
-        while (funds > value)
+        while (temp > funds)
         {
             temp--;
             money.text = temp.ToString();

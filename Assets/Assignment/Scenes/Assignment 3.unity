@@ -4723,6 +4723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e4810640f800c4ea73f5adce94c8d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalEnemy: {fileID: 3935033215482960680, guid: 5d71a4d48b501b4428b8a3a2df807c7f, type: 3}
+  fastEnemy: {fileID: 7110205404701452347, guid: d9443fdf0bb6bf84daa11acf075a7f29, type: 3}
+  slowEnemy: {fileID: 3666703411750084955, guid: 348ace6e5a85a5840a0e1a6d6916ccd6, type: 3}
   path:
   - {x: -4.5, y: 4.5}
   - {x: -4.5, y: -1.5}
