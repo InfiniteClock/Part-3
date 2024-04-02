@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
     public DefenseType defense;
     public Color hover;
     public Color select;
+    public float radius;
+    public Transform rangeIndicator;
     private GameObject currentDefense;      // This will be changed in Feature 3
     private bool isSelected;
     SpriteRenderer spr;
@@ -37,6 +39,7 @@ public class Tile : MonoBehaviour
         if (value)
         {
             spr.color = select;
+            rangeIndicator.localScale = new Vector3 (radius+1, radius+1, radius+1);
         }
         else
         {
@@ -66,5 +69,6 @@ public class Tile : MonoBehaviour
         Color temp = spr.color;
         temp.a = 0;
         spr.color = temp;
+        rangeIndicator.localScale = Vector3.zero;
     }
 }
