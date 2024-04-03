@@ -159,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -184,6 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defense: 0
+  normalTower: {fileID: 637019722472237740, guid: b56f04406d1ea5041892fe0e06c8ae51, type: 3}
+  bombTower: {fileID: 3826082618601601911, guid: e95cae2b07c993745947d56f07c367ec, type: 3}
+  lightningTower: {fileID: 2205200682610501198, guid: 57e5d4725a6839044a2e4ebaed344ecc, type: 3}
   hover: {r: 1, g: 1, b: 1, a: 0.19607843}
   select: {r: 1, g: 1, b: 1, a: 0.39215687}
   radius: 2

@@ -22,12 +22,12 @@ public class Controller : MonoBehaviour
     public GameObject noUI;                         // Holds the UI for no selection
     private GameObject currentUI;                   // Holds the currently selected UI
 
-    public TMP_Text normalStats;                    //These can be implemented in feature 3
-    public TMP_Text bombStats;                      //These can be implemented in feature 3
-    public TMP_Text lightningStats;                 //These can be implemented in feature 3
-    public TMP_Text normalUpgrade;                  //These can be implemented in feature 3
-    public TMP_Text bombUpgrade;                    //These can be implemented in feature 3
-    public TMP_Text lightningUpgrade;               //These can be implemented in feature 3
+    public TMP_Text normalStats;                    // These hold UI text values that change with designated tower's stats or cost
+    public TMP_Text bombStats;                      // These hold UI text values that change with designated tower's stats or cost
+    public TMP_Text lightningStats;                 // These hold UI text values that change with designated tower's stats or cost
+    public TMP_Text normalUpgrade;                  // These hold UI text values that change with designated tower's stats or cost
+    public TMP_Text bombUpgrade;                    // These hold UI text values that change with designated tower's stats or cost
+    public TMP_Text lightningUpgrade;               // These hold UI text values that change with designated tower's stats or cost
     public TMP_Text hp;                             // Text value of current health
     public TMP_Text money;                          // Text value of current money
 
@@ -243,7 +243,6 @@ public class Controller : MonoBehaviour
     private void CreateEnemy(GameObject enemy)
     {
         GameObject temp = Instantiate(enemy, path[0], Quaternion.identity);
-        //temp.GetComponent<Enemy>().path = path;
     }
     private void SetUI(GameObject UI)
     {
@@ -253,15 +252,47 @@ public class Controller : MonoBehaviour
             currentUI = UI;
             currentUI.SetActive(true);
         }
+        if (normalUI.activeSelf) 
+        {
+            normalStats.text = (selectedTile.tower.damage + "\n" + selectedTile.tower.fireSpeed + "\n" + selectedTile.tower.radius);
+            normalUpgrade.text = selectedTile.tower.cost.ToString();
+        }
+        if (bombUI.activeSelf)
+        {
+            bombStats.text = (selectedTile.tower.damage + "\n" + selectedTile.tower.fireSpeed + "\n" + selectedTile.tower.radius);
+            bombUpgrade.text = selectedTile.tower.cost.ToString();
+        }
+        if (lightningUI.activeSelf) 
+        {
+            lightningStats.text = (selectedTile.tower.damage + "\n" + selectedTile.tower.fireSpeed + "\n" + selectedTile.tower.radius);
+            lightningUpgrade.text = selectedTile.tower.cost.ToString();
+        }
     }
 
-    public void OnPurchaseTower(DefenseType type)
+    public void OnPurchaseTower(int type)
     {
-        // Feature 3, call build function through selectedTile, decrease money
+        switch (type)
+        {
+            case 1:
+                if (AdjustMoney(-selectedTile.GetCost(DefenseType.normal)))
+                    selectedTile.BuildDefense(DefenseType.normal);
+                break;
+            case 2:
+                if (AdjustMoney(-selectedTile.GetCost(DefenseType.bomb)))
+                    selectedTile.BuildDefense(DefenseType.bomb);
+                break;
+            case 3:
+                if (AdjustMoney(-selectedTile.GetCost(DefenseType.lightning)))
+                    selectedTile.BuildDefense(DefenseType.lightning);
+                break;
+            default:
+                selectedTile.BuildDefense(DefenseType.empty);
+                break;
+        }
     }
     public void OnUpgradeTower()
     {
-        // Feature 3, call upgrade function through selectedTile, decrease money
+         selectedTile.UpgradeDefense();
     }
 
     public static void LoseHP(int value)

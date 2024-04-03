@@ -6,6 +6,9 @@ public enum DefenseType { empty, normal, bomb, lightning}
 public class Tile : MonoBehaviour
 {
     public DefenseType defense;
+    public GameObject normalTower;
+    public GameObject bombTower;
+    public GameObject lightningTower;
     public Color hover;
     public Color select;
     public float radius;
@@ -13,6 +16,7 @@ public class Tile : MonoBehaviour
     private GameObject currentDefense;      // This will be changed in Feature 3
     private bool isSelected;
     SpriteRenderer spr;
+    public Tower tower { get; private set; }
     private void Start()
     {
         spr = GetComponent<SpriteRenderer>();
@@ -22,16 +26,34 @@ public class Tile : MonoBehaviour
 
     public void BuildDefense(DefenseType value)
     {
-        if (defense != DefenseType.empty)
+        if (tower != null)
         {
-            Debug.Log("Replacing defense...");
+            Destroy(tower.gameObject);
         }
-        else
+        switch (value)
         {
-            Debug.Log("Constructing new defense...");
+            case DefenseType.normal:
+                tower = Instantiate(normalTower,transform.position, Quaternion.identity).GetComponent<Tower>();
+                defense = DefenseType.normal;
+                break;
+            case DefenseType.bomb:
+                tower = Instantiate(bombTower, transform.position, Quaternion.identity).GetComponent<Tower>();
+                defense = DefenseType.bomb;
+                break;
+            case DefenseType.lightning:
+                tower = Instantiate(lightningTower, transform.position, Quaternion.identity).GetComponent<Tower>();
+                defense = DefenseType.lightning;
+                break;
+            case DefenseType.empty:
+                break;
         }
-        Debug.Log(value.ToString()+" construction complete!");
-        defense = value;
+    }
+    public void UpgradeDefense()
+    {
+        if (tower != null)
+        {
+            tower.Upgrade();
+        }
     }
     public void SelectThis(bool value)
     {
@@ -70,5 +92,19 @@ public class Tile : MonoBehaviour
         temp.a = 0;
         spr.color = temp;
         rangeIndicator.localScale = Vector3.zero;
+    }
+    public int GetCost(DefenseType type)
+    {
+        switch (type)
+        {
+            case DefenseType.normal:
+                return normalTower.GetComponent<Tower>().cost;
+            case DefenseType.bomb:
+                return bombTower.GetComponent<Tower>().cost;
+            case DefenseType.lightning:
+                return lightningTower.GetComponent<Tower>().cost;
+            default:
+                return 0;
+        }
     }
 }

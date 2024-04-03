@@ -986,7 +986,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -2940,7 +2940,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 395416608}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825068735}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: OnPurchaseTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &395416608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7018,7 +7030,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1470218394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825068735}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: OnPurchaseTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1470218394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7278,7 +7302,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1524473832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825068735}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: OnPurchaseTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1524473832
 MonoBehaviour:
   m_ObjectHideFlags: 0

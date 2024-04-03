@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     protected int health;
     protected float speed;
     protected int reward;
+
+    public float lifeTime { get; private set; }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -65,6 +67,10 @@ public class Enemy : MonoBehaviour
         {
             path.RemoveAt(0);
         }
+    }
+    private void Update()
+    {
+        lifeTime += Time.deltaTime;
     }
     public void TakeDamage(int d)
     {
